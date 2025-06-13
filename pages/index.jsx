@@ -77,7 +77,7 @@ export default function RodzicChatPage() {
 } finally {
   setLoading(false);
 }
-
+ }
 const handleFollowUp = async () => {
   if (!followUp.trim()) return;
   if (questionCount >= 3) {
