@@ -300,7 +300,7 @@ return (
             disabled={loading || limitReached}
             className="bg-amber-500 hover:bg-amber-600 text-white"
           >
-            {loading ? "Trwa generowanie odpowiedzi...poczekaj ok. 30 sekund" : "Zadaj pytanie"}
+            {loading ? "Trwa generowanie odpowiedzi...ok. 30 sekund" : "Zadaj pytanie"}
           </Button>
         </div>
 
