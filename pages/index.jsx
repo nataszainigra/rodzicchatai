@@ -230,24 +230,34 @@ return (
         </div>
 
         {limitReached && (
-          <div className="bg-white shadow-lg border border-red-200 rounded-xl p-6 mb-6 max-w-md text-center">
-            <h2 className="text-lg font-semibold text-red-600 mb-2">Limit pytań został wyczerpany</h2>
-            <p className="text-gray-700 mb-4">
+<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-lg relative">
+            <button
+              //onClick={() => setShowModal(false)}
+              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+            >
+              ✕
+            </button>
+            <h2 className="text-lg font-semibold text-red-600 mb-4 text-center">Limit pytań został wyczerpany</h2>
+            <p className="mb-4 text-gray-700 text-center">
               Aby kontynuować korzystanie z serwisu, wybierz jeden z dostępnych pakietów:
             </p>
-            <ul className="text-sm text-left list-disc list-inside mb-4">
-              <li>
-                <strong>Pakiet MINI</strong>: 5 pytań – 3,99 zł
-              </li>
-              <li>
-                <strong>Pakiet MIDI</strong>: 15 pytań – 5,99 zł
-              </li>
-              <li>
-                <strong>Pakiet MAXI</strong>: 50 pytań – 9,99 zł
-              </li>
+            <ul className="list-disc list-inside mb-6 text-left text-sm text-gray-700">
+              <li><strong>Pakiet MINI</strong>: 5 pytań – 3,99 zł</li>
+              <li><strong>Pakiet MIDI</strong>: 15 pytań – 5,99 zł</li>
+              <li><strong>Pakiet MAXI</strong>: 50 pytań – 9,99 zł</li>
             </ul>
-            <Button className="bg-amber-500 hover:bg-amber-600 text-white">Wykup dostęp</Button>
+            <button
+              onClick={() => {
+                // obsługa płatności lub przekierowanie
+                //setShowModal(false);
+              }}
+              className="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded"
+            >
+              Wykup dostęp
+            </button>
           </div>
+        </div>
         )}
 
    <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
