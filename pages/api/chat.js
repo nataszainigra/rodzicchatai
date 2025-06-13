@@ -5,7 +5,18 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
-    console.log("Metoda:", req.method); // <-- dodaj log, by widzieć metodę
+  // Nagłówki CORS — pozwól na wywołania z Twojej domeny frontendowej
+  res.setHeader("Access-Control-Allow-Origin", "https://www.rodzic.ai"); // dostosuj do swojej domeny lub "*" do testów
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    // Obsługa preflight
+    return res.status(200).end();
+  }
+
+  console.log("Metoda:", req.method);
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -36,7 +47,7 @@ Odpowiedz dokładnie i rzeczowo.`,
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      messages: messages,
+      messages,
       max_tokens: 1000,
       temperature: 0.7,
     });
