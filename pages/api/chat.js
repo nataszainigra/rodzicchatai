@@ -5,6 +5,7 @@ const openai = new OpenAI({
 });
 
 export default async function handler(req, res) {
+    console.log("Metoda:", req.method); // <-- dodaj log, by widzieć metodę
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
