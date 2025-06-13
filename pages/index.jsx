@@ -332,7 +332,7 @@ return (
 
 
 {/* Cennik pakietów jako klikalne kafelki */}
-<div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 mt-8 mb-10 font-sans text-gray-800">
+<div className="w-full max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 mt-8 mb-10 font-sans text-gray-800">
   <h2 className="text-xl md:text-2xl font-medium mb-5 text-center tracking-wide">
     Pakiety pytań
   </h2>
