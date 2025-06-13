@@ -89,10 +89,35 @@ const handleFollowUp = async () => {
   setLimitReached(false);
 
   try {
+    // Budujesz historię rozmowy
+    const messages = [
+      {
+        role: "system",
+        content: "Jesteś pomocnym doradcą dla rodziców.",
+      },
+      {
+        role: "user",
+        content: `Dane dziecka:
+- Wiek: ${age || "nieznany"}
+- Płeć: ${gender || "nieznana"}
+- Kontekst: ${context || "brak"}
+
+Pytanie: ${question}`, // oryginalne pytanie
+      },
+      {
+        role: "assistant",
+        content: answer, // poprzednia odpowiedź AI
+      },
+      {
+        role: "user",
+        content: followUp, // aktualne pytanie kontynuacyjne
+      },
+    ];
+
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: followUp, age, gender, context }),
+      body: JSON.stringify({ messages }),
     });
 
     if (!response.ok) throw new Error("Błąd serwera");
@@ -107,6 +132,7 @@ const handleFollowUp = async () => {
     setLoading(false);
   }
 };
+
 
 useEffect(() => {
   const timeout = setTimeout(() => {
