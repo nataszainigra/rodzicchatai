@@ -300,8 +300,6 @@ return (
     {/* Informacja o zakończeniu wątku */}
     <div className="mt-4 p-4 bg-yellow-100 rounded-md text-yellow-800 text-center text-sm font-semibold">
       Wątek jest zakończony. Zadaj nowe pytanie.
-      <br />
-      Pozostało Ci <strong>{3 - questionCount}</strong> darmowe {3 - questionCount === 1 ? "pytanie" : "pytania"}.
         </div>
 <div className="flex justify-center mt-4">
           <Button
