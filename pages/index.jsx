@@ -54,7 +54,7 @@ export default function RodzicChatPage() {
   setLimitReached(false);
 
   try {
-    const response = await fetch("/api/chat", {
+fetch("https://rodzicchatai.vercel.app/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question, age, gender, context }),
