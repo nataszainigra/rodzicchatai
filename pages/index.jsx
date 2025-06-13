@@ -274,7 +274,7 @@ return (
             disabled={loading || limitReached}
             className="bg-amber-500 hover:bg-amber-600 text-white"
           >
-            {loading ? "Trwa generowanie odpowiedzi..." : "Zadaj pytanie"}
+            {loading ? "Trwa generowanie odpowiedzi...poczekaj ok. 30 sekund" : "Zadaj pytanie"}
           </Button>
         </div>
 
@@ -296,7 +296,7 @@ return (
                 disabled={loading || limitReached}
                 className="bg-amber-400 hover:bg-amber-500 text-white"
               >
-                {loading ? "Czekaj..." : "Kontynuuj rozmowę"}
+                {loading ? "Czekaj...daj nam czas" : "Kontynuuj rozmowę"}
               </Button>
             </div>
 {followUpAnswer && (
