@@ -206,50 +206,50 @@ return (
             </p>
             <ul className="text-sm text-left list-disc list-inside mb-4">
               <li>
-                <strong>Pakiet MINI</strong>: 5 pytań – 9 zł
+                <strong>Pakiet MINI</strong>: 5 pytań – 2,99 zł
               </li>
               <li>
-                <strong>Pakiet STANDARD</strong>: 15 pytań – 19 zł
+                <strong>Pakiet MIDI</strong>: 15 pytań – 5,99 zł
               </li>
               <li>
-                <strong>Pakiet MAXI</strong>: 50 pytań – 39 zł
+                <strong>Pakiet MAXI</strong>: 50 pytań – 9,99 zł
               </li>
             </ul>
             <Button className="bg-amber-500 hover:bg-amber-600 text-white">Wykup dostęp</Button>
           </div>
         )}
 
-    <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
-      <CardContent className="space-y-4 p-6">
-        <Tooltip>
-          <Input
-            placeholder="Wiek dziecka (np. 4 lata)"
-            value={age}
-            onChange={(e) => setAge(e.target.value)}
-            className="w-full"
-          />
-          <span>Podaj wiek dziecka, aby AI mogło lepiej dopasować poradę.</span>
-        </Tooltip>
+   <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
+  <CardContent className="space-y-4 p-6">
+    <Tooltip side="top" delayDuration={300}>
+      <Input
+        placeholder="Wiek dziecka (np. 4 lata)"
+        value={age}
+        onChange={(e) => setAge(e.target.value)}
+        className="w-full"
+      />
+      <span>Podaj wiek dziecka, aby AI mogło lepiej dopasować poradę.</span>
+    </Tooltip>
 
-        <Tooltip>
-          <Input
-            placeholder="Płeć dziecka (np. chłopiec / dziewczynka )"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            className="w-full"
-          />
-          <span>Płeć nie jest obowiązkowa, ale może pomóc w dokładniejszej odpowiedzi.</span>
-        </Tooltip>
+    <Tooltip side="top" delayDuration={300}>
+      <Input
+        placeholder="Płeć dziecka (np. chłopiec / dziewczynka )"
+        value={gender}
+        onChange={(e) => setGender(e.target.value)}
+        className="w-full"
+      />
+      <span>Płeć nie jest obowiązkowa, ale może pomóc w dokładniejszej odpowiedzi.</span>
+    </Tooltip>
 
-        <Tooltip>
-          <Textarea
-            placeholder="Dodatkowy kontekst, np. 'Dziecko ma trudności z zasypianiem od tygodnia'. Wpisz jak najwięcej informacji, żeby odpowiedź mogła być lepiej sprecyzowana do Twojej sytuacji."
-            value={context}
-            onChange={(e) => setContext(e.target.value)}
-            className="w-full resize-none"
-          />
-          <span>Podaj dodatkowy kontekst, by AI mogło lepiej pomóc.</span>
-        </Tooltip>
+    <Tooltip side="top" delayDuration={300}>
+      <Textarea
+        placeholder="Dodatkowy kontekst, np. 'Dziecko ma trudności z zasypianiem od tygodnia'. Wpisz jak najwięcej informacji, żeby odpowiedź mogła być lepiej sprecyzowana do Twojej sytuacji."
+        value={context}
+        onChange={(e) => setContext(e.target.value)}
+        className="w-full resize-none"
+      />
+      <span>Podaj dodatkowy kontekst, by AI mogło lepiej pomóc.</span>
+    </Tooltip>
 
         <Textarea
           placeholder="Twoje pytanie, np. 'Jak pomóc dziecku zasnąć szybciej?'. Pytanie zadaj bardzo dokładnie, żeby odpowiedź mogła być lepiej sprecyzowana."
