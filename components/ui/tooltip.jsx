@@ -37,7 +37,7 @@ export function Tooltip({ children }) {
             zIndex: 9999,
             pointerEvents: "none",
             boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-            maxWidth: "250px",
+            maxWidth: "350px",
             textAlign: "center",
           }}
         >
