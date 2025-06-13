@@ -53,25 +53,30 @@ export default function RodzicChatPage() {
   setFollowUpAnswer("");
   setLimitReached(false);
 
-  try {
-fetch("https://rodzicchatai.vercel.app/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question, age, gender, context }),
-    });
+ try {
+  setLoading(true);
+  setAnswer("");
+  setFollowUp("");
+  setFollowUpAnswer("");
+  setLimitReached(false);
 
-    if (!response.ok) throw new Error("Błąd serwera");
+  const response = await fetch("https://rodzicchatai.vercel.app/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question, age, gender, context }),
+  });
 
-    const data = await response.json();
-    setAnswer(data.answer || "Brak odpowiedzi od AI.");
-    setQuestionCount((prev) => prev + 1);
-  } catch (error) {
-    setAnswer("Wystąpił błąd podczas generowania odpowiedzi.");
-    console.error(error);
-  } finally {
-    setLoading(false);
-  }
-};
+  if (!response.ok) throw new Error("Błąd serwera");
+
+  const data = await response.json();
+  setAnswer(data.answer || "Brak odpowiedzi od AI.");
+  setQuestionCount((prev) => prev + 1);
+} catch (error) {
+  setAnswer("Wystąpił błąd podczas generowania odpowiedzi.");
+  console.error(error);
+} finally {
+  setLoading(false);
+}
 
 const handleFollowUp = async () => {
   if (!followUp.trim()) return;
