@@ -194,7 +194,7 @@ return (
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow p-4 mb-6 max-w-xl text-sm text-gray-700 text-center">
+        <div className="bg-white rounded-xl shadow p-4 mb-6 w-full max-w-2xl text-sm text-gray-700 text-center">
           Możesz zadać do <strong>3 darmowych pytań</strong> – każde z możliwością jednego dopytania. Po wykorzystaniu darmowego limitu pojawi się informacja o konieczności wykupienia dostępu.
         </div>
 
