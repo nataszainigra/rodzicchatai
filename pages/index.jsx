@@ -322,7 +322,7 @@ return (
                 disabled={loading || limitReached}
                 className="bg-amber-400 hover:bg-amber-500 text-white"
               >
-                {loading ? "Czekaj...daj nam czas" : "Kontynuuj rozmowę"}
+                {loading ? "Czekaj...ok.30 sekund" : "Kontynuuj rozmowę"}
               </Button>
             </div>
 {followUpAnswer && (
