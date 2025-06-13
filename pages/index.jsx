@@ -206,7 +206,7 @@ return (
             </p>
             <ul className="text-sm text-left list-disc list-inside mb-4">
               <li>
-                <strong>Pakiet MINI</strong>: 5 pytań – 2,99 zł
+                <strong>Pakiet MINI</strong>: 5 pytań – 3,99 zł
               </li>
               <li>
                 <strong>Pakiet MIDI</strong>: 15 pytań – 5,99 zł
