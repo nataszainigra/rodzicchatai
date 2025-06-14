@@ -47,7 +47,7 @@ const stripeLinks = [
     setShowPaymentModal(true);
   };
 
-  if (!anonId) return <div>Loading session...</div>;
+ // if (!anonId) return <div>Loading session...</div>;
 
  const handleAsk = async () => {
   if (!question.trim()) return;
