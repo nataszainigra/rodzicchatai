@@ -229,36 +229,52 @@ return (
           Możesz zadać do <strong>3 darmowych pytań</strong> – każde z możliwością jednego dopytania. Po wykorzystaniu darmowego limitu pojawi się informacja o konieczności wykupienia dostępu.
         </div>
 
-        {limitReached && (
-<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-lg relative">
-            <button
-              //onClick={() => setShowModal(false)}
-              className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
-            >
-              ✕
-            </button>
-            <h2 className="text-lg font-semibold text-red-600 mb-4 text-center">Limit pytań został wyczerpany</h2>
-            <p className="mb-4 text-gray-700 text-center">
-              Aby kontynuować korzystanie z serwisu, wybierz jeden z dostępnych pakietów:
-            </p>
-            <ul className="list-disc list-inside mb-6 text-left text-sm text-gray-700">
-              <li><strong>Pakiet MINI</strong>: 5 pytań – 3,99 zł</li>
-              <li><strong>Pakiet MIDI</strong>: 15 pytań – 5,99 zł</li>
-              <li><strong>Pakiet MAXI</strong>: 50 pytań – 9,99 zł</li>
-            </ul>
-            <button
-              onClick={() => {
-                // obsługa płatności lub przekierowanie
-                //setShowModal(false);
-              }}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 rounded"
-            >
-              Wykup dostęp
-            </button>
-          </div>
-        </div>
-        )}
+{limitReached && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-lg relative">
+      <button
+        onClick={() => setLimitReached(false)}
+        className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+        aria-label="Zamknij modal"
+      >
+        ✕
+      </button>
+      <h2 className="text-lg font-semibold text-red-600 mb-4 text-center">
+        Limit pytań został wyczerpany
+      </h2>
+      <p className="mb-4 text-gray-700 text-center">
+        Aby kontynuować korzystanie z serwisu, wybierz jeden z dostępnych pakietów:
+      </p>
+      <div className="flex flex-col gap-4">
+        <a
+          href={stripeLinks.mini}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-center border border-gray-300 rounded-lg p-4 text-gray-800 hover:bg-amber-50 transition-colors font-semibold"
+        >
+          Pakiet MINI: 5 pytań – 3,99 zł
+        </a>
+        <a
+          href={stripeLinks.midi}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-center border border-gray-300 rounded-lg p-4 text-gray-800 hover:bg-amber-50 transition-colors font-semibold"
+        >
+          Pakiet MIDI: 15 pytań – 5,99 zł
+        </a>
+        <a
+          href={stripeLinks.maxi}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block text-center border border-gray-300 rounded-lg p-4 text-gray-800 hover:bg-amber-50 transition-colors font-semibold"
+        >
+          Pakiet MAXI: 50 pytań – 9,99 zł
+        </a>
+      </div>
+    </div>
+  </div>
+)}
+
 
    <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
   <CardContent className="space-y-4 p-6">
