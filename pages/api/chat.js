@@ -6,7 +6,7 @@ const openai = new OpenAI({
 
 export default async function handler(req, res) {
   // Nagłówki CORS — pozwól na wywołania z Twojej domeny frontendowej
-  res.setHeader("Access-Control-Allow-Origin", "https://www.rodzic.ai"); // dostosuj do swojej domeny lub "*" do testów
+  res.setHeader("Access-Control-Allow-Origin", "https://www.rodzic.ai"); // dostosuj do swojej domeny
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -21,14 +21,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { question, age, gender, context } = req.body;
+  const { question, age, gender, context, messages } = req.body;
 
-  if (!question) {
-    return res.status(400).json({ error: "No question provided" });
-  }
+  let chatMessages;
 
-  try {
-    const messages = [
+  if (messages && Array.isArray(messages)) {
+    chatMessages = messages;
+  } else if (question) {
+    chatMessages = [
       {
         role: "system",
         content: "Jesteś pomocnym doradcą dla rodziców.",
@@ -44,10 +44,14 @@ Pytanie: ${question}
 Odpowiedz dokładnie i rzeczowo.`,
       },
     ];
+  } else {
+    return res.status(400).json({ error: "No valid question or messages provided" });
+  }
 
+  try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
-      messages,
+      messages: chatMessages,
       max_tokens: 1000,
       temperature: 0.7,
     });
