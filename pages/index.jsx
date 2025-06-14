@@ -8,6 +8,8 @@ import { Sparkles, HelpCircle, BookOpen } from "lucide-react";
 import { Tooltip } from "../components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../components/ui/dialog";
 import Image from 'next/image';
+import Header from "../components/Header"; // zaimportuj komponent Header
+
 
 
 
@@ -158,6 +160,8 @@ useEffect(() => {
 
 return (
   <>
+          <Header />
+
       {/* Modal instrukcji startowej */}
 <Dialog id="intro-dialog" open={showIntro} onOpenChange={setShowIntro}>
   <DialogContent className="max-w-lg">
