@@ -9,8 +9,9 @@ import { Tooltip } from "../components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../components/ui/dialog";
 import Image from 'next/image';
 import Header from "../components/Header"; // zaimportuj komponent Header
-
-
+import { useAnonId } from '@/hooks/useAnonId';
+import { httpsCallable } from 'firebase/functions';
+import { functions } from '@/lib/firebase';
 
 
 
@@ -26,7 +27,7 @@ export default function RodzicChatPage() {
   const [loading, setLoading] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
-
+  const anonId = useAnonId();
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
@@ -46,6 +47,7 @@ const stripeLinks = [
     setShowPaymentModal(true);
   };
 
+  if (!anonId) return <div>Loading session...</div>;
 
  const handleAsk = async () => {
   if (!question.trim()) return;
@@ -53,6 +55,13 @@ const stripeLinks = [
     setLimitReached(true);
     return;
   }
+   const askQuestion = httpsCallable(functions, 'askQuestion');
+    const result: any = await askQuestion({ anonId });
+
+   if (!result.data.allowed) {
+    setLimitReached(true);
+    return;     
+   }
   setLoading(true);
   setAnswer("");
   setFollowUp("");
