@@ -21,7 +21,8 @@
     "stripe": "^12.15.0",
     "micro": "^10.0.1",
     "uuid": "^9.0.0",
-    "firebase": "^9.22.1"
+    "firebase": "^9.22.1",
+    "@fingerprintjs/fingerprintjs": "^4.6.2"
 
   },
   "devDependencies": {
