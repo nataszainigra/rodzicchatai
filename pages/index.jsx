@@ -26,9 +26,9 @@ export default function RodzicChatPage() {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const packages = [
-    { id: "mini", name: "Pakiet MINI", questions: 5, price: "3,99 zł" },
-    { id: "standard", name: "Pakiet MIDI", questions: 15, price: "5,99 zł" },
-    { id: "maxi", name: "Pakiet MAXI", questions: 50, price: "9,99 zł" },
+    { id: "mini", name: "Pakiet MINI", questions: 5, price: "3,99 zł", url: "https://buy.stripe.com/5kQ8wOcdidiV0FR1aT0ZW00" },
+    { id: "standard", name: "Pakiet MIDI", questions: 15, price: "5,99 zł", url: "https://buy.stripe.com/4gM5kC5OUceR3S38Dl0ZW01" },
+    { id: "maxi", name: "Pakiet MAXI", questions: 50, price: "9,99 zł", url: "https://buy.stripe.com/4gM14m3GM1AdewH4n50ZW02" },
   ];
 const stripeLinks = [
   { id: "mini", name: "Pakiet MINI", price: "3,99 zł", url: "https://buy.stripe.com/5kQ8wOcdidiV0FR1aT0ZW00" },
@@ -41,10 +41,6 @@ const stripeLinks = [
     setShowPaymentModal(true);
   };
 
-  const confirmPurchase = () => {
-    alert(`Przekierowanie do płatności za ${selectedPackage.name}`);
-    setShowPaymentModal(false);
-  };
 
  const handleAsk = async () => {
   if (!question.trim()) return;
@@ -136,6 +132,16 @@ Pytanie: ${question}`, // oryginalne pytanie
   } finally {
     setLoading(false);
   }
+};
+const confirmPurchase = () => {
+  if (selectedPackage?.url) {
+    window.open(selectedPackage.url, "_blank"); // otwiera w nowej karcie
+    // lub jeśli chcesz w tej samej karcie:
+    // window.location.href = selectedPackage.url;
+  } else {
+    alert("Brak linku do płatności.");
+  }
+  setShowPaymentModal(false);
 };
 
 
