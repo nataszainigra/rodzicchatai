@@ -56,7 +56,7 @@ const stripeLinks = [
     return;
   }
    const askQuestion = httpsCallable(functions, 'askQuestion');
-    const result: any = await askQuestion({ anonId });
+const result = await askQuestion({ anonId });
 
    if (!result.data.allowed) {
     setLimitReached(true);
