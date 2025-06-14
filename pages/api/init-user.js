@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { firestore } from '@/lib/firebase'; // make sure this points to lib/firebase.js
+import { firestore } from '../../lib/firebase'; // make sure this points to lib/firebase.js
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
