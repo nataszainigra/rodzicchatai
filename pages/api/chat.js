@@ -23,6 +23,8 @@ export default async function handler(req, res) {
 
   const { question, age, gender, context, messages } = req.body;
 
+    console.log("Req body:", req.body); // <-- log tutaj
+
   let chatMessages;
 
   if (messages && Array.isArray(messages)) {
