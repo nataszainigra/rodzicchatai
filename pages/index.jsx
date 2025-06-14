@@ -30,6 +30,11 @@ export default function RodzicChatPage() {
     { id: "standard", name: "Pakiet MIDI", questions: 15, price: "5,99 zł" },
     { id: "maxi", name: "Pakiet MAXI", questions: 50, price: "9,99 zł" },
   ];
+const stripeLinks = [
+  { id: "mini", name: "Pakiet MINI", price: "3,99 zł", url: "https://buy.stripe.com/5kQ8wOcdidiV0FR1aT0ZW00" },
+  { id: "midi", name: "Pakiet MIDI", price: "5,99 zł", url: "https://buy.stripe.com/4gM5kC5OUceR3S38Dl0ZW01" },
+  { id: "maxi", name: "Pakiet MAXI", price: "9,99 zł", url: "https://buy.stripe.com/4gM14m3GM1AdewH4n50ZW02" },
+];
 
   const openPaymentModal = (pkg) => {
     setSelectedPackage(pkg);
