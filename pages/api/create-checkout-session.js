@@ -11,9 +11,9 @@ export default async function handler(req, res) {
 
   // Tutaj możesz mapować pakiety na ceny (muszą być skonfigurowane w Stripe Dashboard)
   const priceIdMap = {
-    mini: 'prod_SUdzSEU4Xl8T6k', // zamień na prawdziwe price IDs ze Stripe
-    midi: 'prod_SUdzIlQv3LIVzd',
-    maxi: 'prod_SUdzUoAYRTkk8j',
+    mini: 'price_1RZehAAhfgLESpSDkhKh3nm0', // zamień na prawdziwe price IDs ze Stripe
+    midi: 'price_1RZehdAhfgLESpSDdpxoiWI0',
+    maxi: 'price_1RZehvAhfgLESpSDBuA3y1zO',
   };
 
   const priceId = priceIdMap[packageId];
