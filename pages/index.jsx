@@ -184,15 +184,32 @@ const confirmPurchase = () => {
 };
 
 
-useEffect(() => {
 
-  
+useEffect(() => {
+  const init = async () => {
+    const userId = getOrCreateUserId();
+    
+    const ref = doc(db, "anon_users", userId);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      const data = snap.data();
+      setQuestionCount(data.questionsAsked || 0);
+      if ((data.questionsAsked || 0) >= 10) {
+        setLimitReached(true);
+      }
+    }
+  };
+  init();
+
   const timeout = setTimeout(() => {
     const modal = document.getElementById("intro-dialog");
     if (modal) modal.showModal?.();
   }, 500);
+
   return () => clearTimeout(timeout);
 }, []);
+  
+
 
 return (
   <>
