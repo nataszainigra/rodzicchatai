@@ -43,6 +43,7 @@ export default function RodzicChatPage() {
   };
 
 const getOrCreateUserId = () => {
+  console.log("Creating anon user");
   let userId = localStorage.getItem("anon_user_id");
   if (!userId) {
     userId = crypto.randomUUID();
@@ -62,7 +63,7 @@ const getOrCreateUserId = () => {
   
   const handleAsk = async () => {
     if (!question.trim()) return;
-    if (questionCount >= 3) {
+    if (questionCount >= 10) {
       setLimitReached(true);
       return;
     }
@@ -83,7 +84,7 @@ const getOrCreateUserId = () => {
 
   const handleFollowUp = async () => {
     if (!followUp.trim()) return;
-    if (questionCount >= 3) {
+    if (questionCount >= 10) {
       setLimitReached(true);
       return;
     }
@@ -107,7 +108,7 @@ useEffect(() => {
     if (snap.exists()) {
       const data = snap.data();
       setQuestionCount(data.questionsAsked || 0);
-      if ((data.questionsAsked || 0) >= 3) {
+      if ((data.questionsAsked || 0) >= 10) {
         setLimitReached(true);
       }
     }
