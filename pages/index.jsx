@@ -12,7 +12,8 @@ import Header from "../components/Header"; // zaimportuj komponent Header
 //import { useAnonId } from '../hooks/useAnonId';
 import { httpsCallable } from 'firebase/functions';
 import { functions } from '../lib/firebase';
-
+import { db } from "../lib/firebase"; // adjust to your project structure
+import { doc, getDoc, setDoc, increment } from "firebase/firestore";
 
 
 export default function RodzicChatPage() {
