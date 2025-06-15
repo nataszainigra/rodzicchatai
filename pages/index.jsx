@@ -9,7 +9,7 @@ import { Tooltip } from "../components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../components/ui/dialog";
 import Image from 'next/image';
 import Header from "../components/Header"; // zaimportuj komponent Header
-import { useAnonId } from '../hooks/useAnonId';
+//import { useAnonId } from '../hooks/useAnonId';
 import { httpsCallable } from 'firebase/functions';
 import { functions } from '../lib/firebase';
 
@@ -165,6 +165,8 @@ const confirmPurchase = () => {
 
 
 useEffect(() => {
+
+  
   const timeout = setTimeout(() => {
     const modal = document.getElementById("intro-dialog");
     if (modal) modal.showModal?.();
