@@ -305,9 +305,24 @@ return (
 
    <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
   <CardContent className="space-y-4 p-6">
-    <div className="mb-4 text-center text-gray-700 font-semibold">
-  Darmowe pytania: {Math.max(10 - questionCount, 0)} / 10
-</div>
+  <div className="w-full max-w-2xl mb-6">
+    <div className="flex justify-between mb-1 text-gray-700 font-semibold">
+      <span>Darmowe pytania:</span>
+      <span>{Math.max(10 - questionCount, 0)} / 10</span>
+    </div>
+    <div className="w-full bg-gray-300 rounded-full h-3">
+      <div
+        className={`h-3 rounded-full transition-all duration-500 ${
+          questionCount >= 10
+            ? "bg-red-600"
+            : questionCount >= 7
+            ? "bg-yellow-500"
+            : "bg-amber-500"
+        }`}
+        style={{ width: `${(questionCount / 10) * 100}%` }}
+      />
+    </div>
+  </div>
     <Tooltip side="top" delayDuration={300}>
       <Input
         placeholder="Wiek dziecka (np. 4 lata)"
