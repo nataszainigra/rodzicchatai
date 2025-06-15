@@ -95,7 +95,7 @@ const result = await askQuestion({ anonId });
  }
 const handleFollowUp = async () => {
   if (!followUp.trim()) return;
-  if (questionCount >= 3) {
+  if (questionCount >= 10) {
     setLimitReached(true);
     return;
   }
@@ -178,7 +178,7 @@ return (
       <DialogTitle className="text-left">Jak korzystać z serwisu?</DialogTitle>
     </DialogHeader>
     <div className="text-sm text-gray-700 space-y-2 px-6">
-      <p>Możesz zadać maksymalnie 3 darmowe pytania. Po każdej odpowiedzi możesz dopytać raz, by kontynuować wątek.</p>
+      <p>Możesz zadać maksymalnie 10 darmowych pytanń. Po każdej odpowiedzi możesz dopytać raz, by kontynuować wątek.</p>
       <p>Jeśli chcesz kontynuować korzystanie z serwisu – dostępne są pakiety płatne.</p>
     </div>
     <div className="flex justify-end pt-4 px-6">
@@ -253,7 +253,7 @@ return (
         </div>
 
         <div className="bg-white rounded-xl shadow p-4 mb-6 w-full max-w-2xl text-sm text-gray-700 text-center">
-          Możesz zadać do <strong>3 darmowych pytań</strong> – każde z możliwością jednego dopytania. Po wykorzystaniu darmowego limitu pojawi się informacja o konieczności wykupienia dostępu.
+          Możesz zadać do <strong>10 darmowych pytań</strong> – każde z możliwością jednego dopytania. Po wykorzystaniu darmowego limitu pojawi się informacja o konieczności wykupienia dostępu.
         </div>
 
 {limitReached && (
