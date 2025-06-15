@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { Sparkles, HelpCircle, BookOpen } from "lucide-react";
 import { Tooltip } from "../components/ui/tooltip";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "../components/ui/dialog";
+import { db } from "../lib/firebase"; // adjust to your project structure
+import { doc, getDoc, setDoc, increment } from "firebase/firestore";
 
 export default function RodzicChatPage() {
   const [showIntro, setShowIntro] = useState(true);
@@ -40,6 +42,24 @@ export default function RodzicChatPage() {
     setShowPaymentModal(false);
   };
 
+const getOrCreateUserId = () => {
+  let userId = localStorage.getItem("anon_user_id");
+  if (!userId) {
+    userId = crypto.randomUUID();
+    localStorage.setItem("anon_user_id", userId);
+  }
+  return userId;
+};
+  
+  const incrementQuestionCount = async () => {
+  const userId = getOrCreateUserId();
+  const ref = doc(db, "anon_users", userId);
+  await setDoc(ref, {
+    questionsAsked: increment(1),
+    lastActivity: new Date(),
+  }, { merge: true });
+};
+  
   const handleAsk = async () => {
     if (!question.trim()) return;
     if (questionCount >= 3) {
@@ -56,6 +76,7 @@ export default function RodzicChatPage() {
         "To przykładowa odpowiedź wygenerowana przez AI. W rzeczywistości tutaj pojawi się informacja oparta na literaturze i danych dostarczonych przez Ciebie. Zawsze skonsultuj się ze specjalistą."
       );
       setQuestionCount((prev) => prev + 1);
+      await incrementQuestionCount();
       setLoading(false);
     }, 2000);
   };
@@ -78,13 +99,28 @@ export default function RodzicChatPage() {
     }, 2000);
   };
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const modal = document.getElementById("intro-dialog");
-      if (modal) modal.showModal?.();
-    }, 500);
-    return () => clearTimeout(timeout);
-  }, []);
+useEffect(() => {
+  const init = async () => {
+    const userId = getOrCreateUserId();
+    const ref = doc(db, "anon_users", userId);
+    const snap = await getDoc(ref);
+    if (snap.exists()) {
+      const data = snap.data();
+      setQuestionCount(data.questionsAsked || 0);
+      if ((data.questionsAsked || 0) >= 3) {
+        setLimitReached(true);
+      }
+    }
+  };
+  init();
+
+  const timeout = setTimeout(() => {
+    const modal = document.getElementById("intro-dialog");
+    if (modal) modal.showModal?.();
+  }, 500);
+
+  return () => clearTimeout(timeout);
+}, []);
 
   return (
     <>
