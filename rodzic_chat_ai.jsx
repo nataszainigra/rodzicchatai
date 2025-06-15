@@ -118,6 +118,7 @@ useEffect(() => {
   init();
 
   const timeout = setTimeout(() => {
+    console.log("ale tu dziala???");
     const modal = document.getElementById("intro-dialog");
     if (modal) modal.showModal?.();
   }, 500);
