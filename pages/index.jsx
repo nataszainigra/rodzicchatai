@@ -95,13 +95,14 @@ const stripeLinks = [
  }
 const handleFollowUp = async () => {
   if (!followUp.trim()) return;
-  if (questionCount >= 10) {
+ /* if (questionCount >= 10) {
     setLimitReached(true);
     return;
   }
+  */
   setLoading(true);
   setFollowUpAnswer("");
-  setLimitReached(false);
+ // setLimitReached(false);
 
   try {
     // Budujesz historię rozmowy
@@ -139,7 +140,7 @@ Pytanie: ${question}`, // oryginalne pytanie
 
     const data = await response.json();
     setFollowUpAnswer(data.answer || "Brak odpowiedzi od AI.");
-    setQuestionCount((prev) => prev + 1);
+   // setQuestionCount((prev) => prev + 1);
   } catch (error) {
     setFollowUpAnswer("Wystąpił błąd podczas generowania odpowiedzi.");
     console.error(error);
