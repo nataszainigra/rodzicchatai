@@ -30,6 +30,7 @@ export default function RodzicChatPage() {
   const anonId = useAnonId();
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [hasFollowedUp, setHasFollowedUp] = useState(false);
 
   const packages = [
     { id: "mini", name: "Pakiet MINI", questions: 5, price: "3,99 zł", url: "https://buy.stripe.com/5kQ8wOcdidiV0FR1aT0ZW00" },
@@ -67,6 +68,7 @@ const stripeLinks = [
   setFollowUp("");
   setFollowUpAnswer("");
   setLimitReached(false);
+  setHasFollowedUp(false);
 
  try {
   setLoading(true);
@@ -95,6 +97,7 @@ const stripeLinks = [
  }
 const handleFollowUp = async () => {
   if (!followUp.trim()) return;
+  if (hasFollowedUp) return;
  /* if (questionCount >= 10) {
     setLimitReached(true);
     return;
@@ -141,6 +144,7 @@ Pytanie: ${question}`, // oryginalne pytanie
     const data = await response.json();
     setFollowUpAnswer(data.answer || "Brak odpowiedzi od AI.");
    // setQuestionCount((prev) => prev + 1);
+    setHasFollowedUp(true);
   } catch (error) {
     setFollowUpAnswer("Wystąpił błąd podczas generowania odpowiedzi.");
     console.error(error);
@@ -391,7 +395,7 @@ return (
             <div className="flex justify-end">
               <Button
                 onClick={handleFollowUp}
-                disabled={loading || limitReached}
+                disabled={loading || limitReached || hasFollowedUp}
                 className="bg-amber-400 hover:bg-amber-500 text-white"
               >
                 {loading ? "Czekaj...ok.30 sekund" : "Kontynuuj rozmowę"}
