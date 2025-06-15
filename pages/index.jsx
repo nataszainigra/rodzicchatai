@@ -28,7 +28,7 @@ export default function RodzicChatPage() {
   const [loading, setLoading] = useState(false);
   const [questionCount, setQuestionCount] = useState(0);
   const [limitReached, setLimitReached] = useState(false);
-  const anonId = useAnonId();
+  //const anonId = useAnonId();
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [hasFollowedUp, setHasFollowedUp] = useState(false);
