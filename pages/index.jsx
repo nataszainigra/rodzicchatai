@@ -51,6 +51,25 @@ const stripeLinks = [
 
  // if (!anonId) return <div>Loading session...</div>;
 
+const getOrCreateUserId = () => {
+  console.log("Creating anon user");
+  let userId = localStorage.getItem("anon_user_id");
+  if (!userId) {
+    userId = crypto.randomUUID();
+    localStorage.setItem("anon_user_id", userId);
+  }
+  return userId;
+};
+  
+  const incrementQuestionCount = async () => {
+  const userId = getOrCreateUserId();
+  const ref = doc(db, "anon_users", userId);
+  await setDoc(ref, {
+    questionsAsked: increment(1),
+    lastActivity: new Date(),
+  }, { merge: true });
+};
+  
  const handleAsk = async () => {
   if (!question.trim()) return;
   if (questionCount >= 10) {
