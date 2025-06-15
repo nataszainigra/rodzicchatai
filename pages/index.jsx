@@ -305,6 +305,9 @@ return (
 
    <Card className="w-full max-w-2xl shadow-xl rounded-2xl">
   <CardContent className="space-y-4 p-6">
+    <div className="mb-4 text-center text-gray-700 font-semibold">
+  Darmowe pytania: {Math.max(10 - questionCount, 0)} / 10
+</div>
     <Tooltip side="top" delayDuration={300}>
       <Input
         placeholder="Wiek dziecka (np. 4 lata)"
