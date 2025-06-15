@@ -51,17 +51,17 @@ const stripeLinks = [
 
  const handleAsk = async () => {
   if (!question.trim()) return;
-  if (questionCount >= 3) {
+  if (questionCount >= 10) {
     setLimitReached(true);
     return;
   }
-   const askQuestion = httpsCallable(functions, 'askQuestion');
-const result = await askQuestion({ anonId });
+ //  const askQuestion = httpsCallable(functions, 'askQuestion');
+//const result = await askQuestion({ anonId });
 
-   if (!result.data.allowed) {
-    setLimitReached(true);
-    return;     
-   }
+  // if (!result.data.allowed) {
+  //  setLimitReached(true);
+  //  return;     
+  // }
   setLoading(true);
   setAnswer("");
   setFollowUp("");
