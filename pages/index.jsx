@@ -183,7 +183,7 @@ return (
       <DialogTitle className="text-left">Jak korzystać z serwisu?</DialogTitle>
     </DialogHeader>
     <div className="text-sm text-gray-700 space-y-2 px-6">
-      <p>Możesz zadać maksymalnie 10 darmowych pytanń. Po każdej odpowiedzi możesz dopytać raz, by kontynuować wątek.</p>
+      <p>Możesz zadać maksymalnie 10 darmowych pytań. Po każdej odpowiedzi możesz dopytać raz, by kontynuować wątek.</p>
       <p>Jeśli chcesz kontynuować korzystanie z serwisu – dostępne są pakiety płatne.</p>
     </div>
     <div className="flex justify-end pt-4 px-6">
