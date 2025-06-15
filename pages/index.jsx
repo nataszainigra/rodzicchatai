@@ -108,6 +108,7 @@ const getOrCreateUserId = () => {
   const data = await response.json();
   setAnswer(data.answer || "Brak odpowiedzi od AI.");
   setQuestionCount((prev) => prev + 1);
+   await incrementQuestionCount();
 } catch (error) {
   setAnswer("Wystąpił błąd podczas generowania odpowiedzi.");
   console.error(error);
