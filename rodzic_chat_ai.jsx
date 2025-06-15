@@ -102,7 +102,9 @@ const getOrCreateUserId = () => {
 
 useEffect(() => {
   const init = async () => {
+    console.log("trying getorcreate");
     const userId = getOrCreateUserId();
+    
     const ref = doc(db, "anon_users", userId);
     const snap = await getDoc(ref);
     if (snap.exists()) {
